@@ -25,7 +25,7 @@ if 'files' in contents['info']:
     for file in contents['info']['files']:
         path_file = os.path.join(root, *file['path'])
         if not os.path.exists(os.path.dirname(path_file)):
-            os.mkdir(os.path.dirname(path_file))
+            os.makedirs(os.path.dirname(path_file))
         file_names.append({"path" : path_file, "length" : file["length"]})
         total_length += file["length"]
 else:
