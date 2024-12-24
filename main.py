@@ -32,3 +32,18 @@ else:
     file_names.append({"path" : root, "length" : contents['info']['length']})
     total_length = contents['info']['length']
 
+tracker_urls = []
+if isinstance(announce_list, list):
+    # Handle announce-list format (list of lists)
+    for announce_sublist in announce_list:
+        if isinstance(announce_sublist, list):
+            tracker_urls.extend(announce_sublist)
+        else:
+            tracker_urls.append(announce_sublist)
+else:
+    # Handle single announce URL
+    tracker_urls.append(announce_list)
+    
+print("Tracker URLs:")
+for url in tracker_urls:
+    print(f"  {url}")
