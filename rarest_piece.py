@@ -1,7 +1,5 @@
 import logging
 
-__author__ = 'alexisgallepe'
-
 
 class RarestPieces(object):
     def __init__(self, pieces_manager):

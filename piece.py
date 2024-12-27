@@ -1,5 +1,3 @@
-__author__ = 'alexisgallepe'
-
 import hashlib
 import math
 import time

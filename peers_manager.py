@@ -1,7 +1,4 @@
 import time
-
-__author__ = 'alexisgallepe'
-
 import select
 from threading import Thread
 from pubsub import pub

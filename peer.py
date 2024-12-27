@@ -1,7 +1,4 @@
 import time
-
-__author__ = 'alexisgallepe'
-
 import socket
 import struct
 import bitstring

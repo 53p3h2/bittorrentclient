@@ -1,5 +1,3 @@
-__author__ = 'alexisgallepe'
-
 import piece
 import bitstring
 import logging
