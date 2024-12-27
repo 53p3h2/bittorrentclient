@@ -15,11 +15,7 @@ class Run(object):
     last_log_line = ""
 
     def __init__(self):
-        try:
-            torrent_file = sys.argv[1]
-        except IndexError:
-            logging.error("No torrent file provided!")
-            sys.exit(0)
+        torrent_file = sys.argv[1]
         self.torrent = torrent.Torrent().load_from_path(torrent_file)
         self.tracker = tracker.Tracker(self.torrent)
 
