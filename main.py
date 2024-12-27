@@ -18,32 +18,27 @@ root = contents['info']['name']
 file_names = []
 total_length : int=0
 
-#crating directories for files mentioned in info section
-if 'files' in contents['info']:
-    if not os.path.exists(root):
-        os.mkdir(root,0o0766)
-    for file in contents['info']['files']:
-        path_file = os.path.join(root, *file['path'])
-        if not os.path.exists(os.path.dirname(path_file)):
-            os.makedirs(os.path.dirname(path_file))
-        file_names.append({"path" : path_file, "length" : file["length"]})
-        total_length += file["length"]
-else:
-    file_names.append({"path" : root, "length" : contents['info']['length']})
-    total_length = contents['info']['length']
+print(contents)
 
-tracker_urls = []
-if isinstance(announce_list, list):
-    # Handle announce-list format (list of lists)
-    for announce_sublist in announce_list:
-        if isinstance(announce_sublist, list):
-            tracker_urls.extend(announce_sublist)
-        else:
-            tracker_urls.append(announce_sublist)
+#crating directories for files mentioned in info section
+# if 'files' in contents['info']:
+#     if not os.path.exists(root):
+#         os.mkdir(root,0o0766)
+#     for file in contents['info']['files']:
+#         path_file = os.path.join(root, *file['path'])
+#         if not os.path.exists(os.path.dirname(path_file)):
+#             os.makedirs(os.path.dirname(path_file))
+#         file_names.append({"path" : path_file, "length" : file["length"]})
+#         total_length += file["length"]
+# else:
+#     file_names.append({"path" : root, "length" : contents['info']['length']})
+#     total_length = contents['info']['length']
+
+#getting list of tracker urls
+if 'announce-list' in contents:
+    trackers =(contents['announce-list'])
 else:
-    # Handle single announce URL
-    tracker_urls.append(announce_list)
-    
-print("Tracker URLs:")
-for url in tracker_urls:
-    print(f"  {url}")
+    trackers = (contents['announce'])
+
+
+peer_id = hashlib.sha1(str(time.time()).encode('utf-8')).digest()
